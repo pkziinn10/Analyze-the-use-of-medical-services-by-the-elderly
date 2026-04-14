@@ -69,13 +69,13 @@ The models were evaluated using 10-fold stratified cross-validation and results 
 
 | Model | Accuracy | F1 Score |
 |-------|----------|----------|
-| XGBoost | 0.8166 | 0.7348 |
-| Random Forest | 0.8166 | 0.7348 |
-| MLP Classifier | 0.8110 | 0.7320 |
-| Logistic Regression | 0.8110 | 0.7320 |
-| KNN | 0.8095 | 0.7398 |
-| Decision Tree | 0.8067 | 0.7322 |
-| SVM | 0.7801 | 0.7291 |
+| XGBoost | 0.8166 ± 0.0447 | 0.7348 ± 0.0622 |
+| Random Forest | 0.8166 ± 0.0447 | 0.7348 ± 0.0622 |
+| MLP Classifier | 0.8110 ± 0.0440 | 0.7320 ± 0.0615 |
+| Logistic Regression | 0.8110 ± 0.0429 | 0.7320 ± 0.0615 |
+| KNN | 0.8095 ± 0.0511 | 0.7398 ± 0.0603 |
+| Decision Tree | 0.8067 ± 0.0347 | 0.7322 ± 0.0531 |
+| SVM | 0.7801 ± 0.0387 | 0.7291 ± 0.0506 |
 
 - **Cross-Validation:** Each model was trained and evaluated on 10 folds, ensuring robust performance.
 - **Statistical Test:** The Wilcoxon test was applied to compare distributions and select the best models with statistical confidence.
