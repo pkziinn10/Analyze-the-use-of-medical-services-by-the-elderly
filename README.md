@@ -30,11 +30,10 @@ Population aging increases chronic illnesses and healthcare demand. This project
 
 **Target categories:**
 - 0–1 visits
-- 2–3 visits
-- 4+ visits
+- 2+ visits (Merged the original 2-3 and 4+ classes for a more balanced binary task)
 
 ## ⚙️ Methodology Overview
-- **Data Cleaning:** Removal of redundant or inconsistent features
+- **Data Cleaning & Feature Selection:** Removal of redundant or inconsistent features, plus dropping the bottom 12 low-importance features using MDI (Mean Decrease Impurity) consensus.
 - **Encoding:** One-Hot Encoding + ordinal labels
 - **Scaling:** MinMaxScaler inside the CV pipeline
 - **Splitting:** Stratified train/test split
@@ -63,32 +62,29 @@ Population aging increases chronic illnesses and healthcare demand. This project
 | **SVM** | C, kernel, gamma | Accuracy, F1-score |
 | **KNN** | n_neighbors, metric | Accuracy, F1-score |
 
-The models were evaluated using 10-fold stratified cross-validation and results showed that **MLP Classifier** achieved the highest accuracy, while **Decision Tree** obtained the best F1-score.
+The models were evaluated using 10-fold stratified cross-validation and results showed that **XGBoost and Random Forest** achieved the highest accuracy, while **KNN** obtained the best F1-score.
 
 ## 📊 Results
 **Mean ± Standard Deviation across 10-fold CV**
 
 | Model | Accuracy | F1 Score |
 |-------|----------|----------|
-| MLP Classifier | 0.5240 ± 0.0560 | 0.3957 ± 0.0794 |
-| Logistic Regression | 0.5015 ± 0.0724 | 0.3932 ± 0.0834 |
-| Random Forest | 0.4861 ± 0.0585 | 0.4013 ± 0.0631 |
-| Decision Tree | 0.4593 ± 0.0553 | 0.4199 ± 0.0575 |
-| XGBoost | 0.4245 ± 0.0698 | 0.4099 ± 0.0726 |
-| SVM | 0.4077 ± 0.0675 | 0.4132 ± 0.0693 |
-| KNN | 0.4019 ± 0.0486 | 0.4039 ± 0.0421 |
+| XGBoost | 0.8166 | 0.7348 |
+| Random Forest | 0.8166 | 0.7348 |
+| MLP Classifier | 0.8110 | 0.7320 |
+| Logistic Regression | 0.8110 | 0.7320 |
+| KNN | 0.8095 | 0.7398 |
+| Decision Tree | 0.8067 | 0.7322 |
+| SVM | 0.7801 | 0.7291 |
 
 - **Cross-Validation:** Each model was trained and evaluated on 10 folds, ensuring robust performance.
-- **Statistical Test:** The Wilcoxon test confirmed statistically significant differences between models, demonstrating MLP's superiority in accuracy.
+- **Statistical Test:** The Wilcoxon test was applied to compare distributions and select the best models with statistical confidence.
 
 ## 🏆 Main Findings
-- MLP achieved the highest accuracy (~52.4%)
-- Decision Tree had the best F1-score
-- Wilcoxon Test confirms significant differences between models
-- Performance is moderate due to:
-  - Class imbalance
-  - Limited dataset size
-  - Complexity of health-related behaviors
+- Merging the overlapping targets into a binary problem ("0-1 visits" vs "2+ visits") dramatically improved predictability.
+- Removing the bottom 12 noise features using MDI (Mean Decrease Impurity) helped clarify decision boundaries.
+- **XGBoost** and **Random Forest** achieved the highest accuracy (~81.66%).
+- **KNN** achieved the best F1-score (~73.98%).
 
 ## 🧰 Requirements
 Create a `requirements.txt` file:
