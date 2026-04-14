@@ -8,7 +8,7 @@ A compact, reproducible project that explores patterns of medical service usage 
 ---
 
 ## 🚀 Quick Highlights
-- Predicts annual doctor-visit frequency (categorized: `0–1`, `2–3`, `4+` visits)  
+- Predicts annual doctor-visit frequency (categorized: `0–1`, `2+` visits)  
 - Uses **stratified cross-validation** + **GridSearch**  
 - Evaluated using **Accuracy** and **macro F1-score**  
 - **Wilcoxon Test** applied for statistical validation  
